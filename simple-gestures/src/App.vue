@@ -1,17 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="gesture-list">
+      <Gesture 
+        v-for="gest in savedGestures"
+        v-bind:key=gest.id
+        v-bind:gesture=gest
+      />
+    </div>
+    <!-- <div class="createGesture"></div> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Gesture from './components/Gesture.vue'
 
 export default {
   name: 'app',
+  data: function () {
+    return {
+      savedGestures: [
+        {from: "Ethan", to: "Danny", type: "hugged", comment: "", id: 0}
+      ]
+    }
+  },
   components: {
-    HelloWorld
+    Gesture
+  },
+  methods: {
+
   }
 }
 </script>
